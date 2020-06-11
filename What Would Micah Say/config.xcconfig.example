@@ -1,0 +1,21 @@
+//
+//  Config.xcconfig
+//  What Would Micah Say
+//
+//  Created by asc on 6/11/20.
+//  Copyright © 2020 Aaronland. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+
+OAUTH2_AUTH_URL = https:$(SLASH)/collection.cooperhewitt.org/api/oauth2/authenticate/
+
+OAUTH2_TOKEN_URL = https:$(SLASH)/collection.cooperhewitt.org/api/oauth2/access_token/
+
+OAUTH2_CLIENT_ID = 
+
+OAUTH2_CLIENT_SECRET =
+
+OAUTH2_SCOPE = login

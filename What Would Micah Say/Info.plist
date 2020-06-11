@@ -16,6 +16,17 @@
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>wwms</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
@@ -60,5 +71,15 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>OAuth2AuthURL</key>
+	<string>$(OAUTH2_AUTH_URL)</string>
+	<key>OAuth2TokenURL</key>
+	<string>$(OAUTH2_TOKEN_URL)</string>
+	<key>OAuth2ClientID</key>
+	<string>$(OAUTH2_CLIENT_ID)</string>
+	<key>OAuth2ClientSecret</key>
+	<string>$(OAUTH2_CLIENT_SECRET)</string>
+	<key>OAuth2Scope</key>
+	<string>$(OAUTH2_SCOPE)</string>
 </dict>
 </plist>
