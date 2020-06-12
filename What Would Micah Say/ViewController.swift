@@ -52,6 +52,8 @@ class ViewController: UIViewController {
         wrapper.require_client_secret = false
         wrapper.allow_null_expires = true
         
+        wrapper.logger.logLevel = .debug
+        
         self.oauth2_wrapper = wrapper
     }
     
