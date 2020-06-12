@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ggD-hE-odF">
-                                <rect key="frame" x="20" y="129" width="374" height="684"/>
+                                <rect key="frame" x="20" y="129" width="374" height="625"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
@@ -30,19 +30,24 @@
                                     <action selector="triggerWWMS" destination="BYZ-38-t0r" eventType="touchUpInside" id="eTx-MM-eQo"/>
                                 </connections>
                             </button>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="center" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="iio-9N-pJA">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="center" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="iio-9N-pJA">
                                 <rect key="frame" x="20" y="66" width="56" height="55"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="56" id="pV5-wM-RQm"/>
+                                    <constraint firstAttribute="height" constant="55" id="xhA-wZ-mnt"/>
+                                </constraints>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="ggD-hE-odF" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Jrh-xq-qcV"/>
-                            <constraint firstItem="hsS-g3-TgJ" firstAttribute="trailing" secondItem="ggD-hE-odF" secondAttribute="trailing" id="Qeu-Xa-Q2W"/>
-                            <constraint firstItem="hsS-g3-TgJ" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Rlc-F2-cMF"/>
-                            <constraint firstItem="ggD-hE-odF" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="V0m-YV-tFk"/>
-                            <constraint firstItem="hsS-g3-TgJ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="22" id="joN-gt-B0k"/>
-                            <constraint firstItem="ggD-hE-odF" firstAttribute="top" secondItem="hsS-g3-TgJ" secondAttribute="bottom" constant="8" symbolic="YES" id="opz-ht-qrM"/>
+                            <constraint firstItem="iio-9N-pJA" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="22" id="33l-JY-3Ka"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ggD-hE-odF" secondAttribute="bottom" constant="59" id="6Y9-Jm-Yfx"/>
+                            <constraint firstItem="ggD-hE-odF" firstAttribute="top" secondItem="iio-9N-pJA" secondAttribute="bottom" constant="8" symbolic="YES" id="E1U-dT-ow6"/>
+                            <constraint firstItem="hsS-g3-TgJ" firstAttribute="trailing" secondItem="ggD-hE-odF" secondAttribute="trailing" id="FuB-np-Ntt"/>
+                            <constraint firstItem="hsS-g3-TgJ" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="ILJ-5O-ktg"/>
+                            <constraint firstItem="iio-9N-pJA" firstAttribute="leading" secondItem="ggD-hE-odF" secondAttribute="leading" id="V4B-h3-p7g"/>
+                            <constraint firstItem="iio-9N-pJA" firstAttribute="top" secondItem="hsS-g3-TgJ" secondAttribute="top" id="cAe-KR-Dkn"/>
+                            <constraint firstItem="iio-9N-pJA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="oEZ-z8-u6A"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

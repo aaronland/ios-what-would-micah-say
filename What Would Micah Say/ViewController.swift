@@ -87,8 +87,10 @@ class ViewController: UIViewController {
         }
     }
     
-    private func getAccessToken(completion: @escaping (OAuthSwiftCredential) -> ()){
+    func getAccessToken(completion: @escaping (OAuthSwiftCredential) -> ()){
         print("AUTHORIZE")
+        
+        let keychain_label = "wwms://org.cooperhewitt.collection/access_token"
         
         if let creds = self.credentials {
             
@@ -99,11 +101,40 @@ class ViewController: UIViewController {
             }
         }
         
-        // save to / retrieve from keychain here...
+        if let data = KeychainWrapper.standard.data(forKey: keychain_label) {
+            
+            let decoder = JSONDecoder()
+            var creds: OAuthSwiftCredential
+            
+            do {
+                creds = try decoder.decode(OAuthSwiftCredential.self, from: data)
+            } catch(let error) {
+                print("SAD DECODE", error)
+                return
+            }
+            
+            if !creds.isTokenExpired() {
+                print("HAVE EXISTING TOKEN")
+                completion(creds)
+                return
+            }
+        }
         
-        // show alert explaining OAuth stuff
+        func getStore(credentials: OAuthSwiftCredential) {
+            
+            let encoder = JSONEncoder()
+            
+            do {
+                let data = try encoder.encode(credentials)
+                KeychainWrapper.standard.set(data, forKey: keychain_label)
+            } catch (let error) {
+                    print("SAD ENCODING", error)
+            }
+            
+            completion(credentials)
+        }
         
-        self.getNewAccessToken(completion: completion)
+        self.getNewAccessToken(completion: getStore)
     }
     
     private func getNewAccessToken(completion: @escaping (OAuthSwiftCredential) -> ()){
