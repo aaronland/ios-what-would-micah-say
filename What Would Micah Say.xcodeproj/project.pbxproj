@@ -16,7 +16,7 @@
 		4AB6EB372492E29F00C22C6A /* What_Would_Micah_SayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB6EB362492E29F00C22C6A /* What_Would_Micah_SayTests.swift */; };
 		4AB6EB4A2492E68600C22C6A /* CooperHewitt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB6EB492492E68600C22C6A /* CooperHewitt.swift */; };
 		4AC3F6D62494062300445C2B /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 4AC3F6D52494062300445C2B /* Config.xcconfig */; };
-		4AFD2D042494034200F20918 /* OAuth2Wrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 4AFD2D032494034200F20918 /* OAuth2Wrapper */; };
+		4AC3F6DC24941FFC00445C2B /* OAuth2Wrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 4AC3F6DB24941FFC00445C2B /* OAuth2Wrapper */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,7 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4AFD2D042494034200F20918 /* OAuth2Wrapper in Frameworks */,
+				4AC3F6DC24941FFC00445C2B /* OAuth2Wrapper in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,7 +126,7 @@
 			);
 			name = "What Would Micah Say";
 			packageProductDependencies = (
-				4AFD2D032494034200F20918 /* OAuth2Wrapper */,
+				4AC3F6DB24941FFC00445C2B /* OAuth2Wrapper */,
 			);
 			productName = "What Would Micah Say";
 			productReference = 4AB6EB1C2492E29B00C22C6A /* What Would Micah Say.app */;
@@ -179,7 +179,7 @@
 			);
 			mainGroup = 4AB6EB132492E29B00C22C6A;
 			packageReferences = (
-				4AFD2D022494034200F20918 /* XCRemoteSwiftPackageReference "swift-oauth2-wrapper" */,
+				4AC3F6DA24941FFC00445C2B /* XCRemoteSwiftPackageReference "swift-oauth2-wrapper" */,
 			);
 			productRefGroup = 4AB6EB1D2492E29B00C22C6A /* Products */;
 			projectDirPath = "";
@@ -495,20 +495,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		4AFD2D022494034200F20918 /* XCRemoteSwiftPackageReference "swift-oauth2-wrapper" */ = {
+		4AC3F6DA24941FFC00445C2B /* XCRemoteSwiftPackageReference "swift-oauth2-wrapper" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/aaronland/swift-oauth2-wrapper";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		4AFD2D032494034200F20918 /* OAuth2Wrapper */ = {
+		4AC3F6DB24941FFC00445C2B /* OAuth2Wrapper */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 4AFD2D022494034200F20918 /* XCRemoteSwiftPackageReference "swift-oauth2-wrapper" */;
+			package = 4AC3F6DA24941FFC00445C2B /* XCRemoteSwiftPackageReference "swift-oauth2-wrapper" */;
 			productName = OAuth2Wrapper;
 		};
 /* End XCSwiftPackageProductDependency section */

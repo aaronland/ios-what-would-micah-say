@@ -59,9 +59,9 @@
         "package": "OAuth2Wrapper",
         "repositoryURL": "https://github.com/aaronland/swift-oauth2-wrapper",
         "state": {
-          "branch": "master",
-          "revision": "d00c71685b9ede9ae510d59548a6032ab9d39715",
-          "version": null
+          "branch": null,
+          "revision": "487f54c23eb3e2b5d27a6f9efb772025eefa4885",
+          "version": "0.0.1"
         }
       },
       {
