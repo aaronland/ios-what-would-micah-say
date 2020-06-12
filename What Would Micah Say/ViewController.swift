@@ -87,14 +87,32 @@ class ViewController: UIViewController {
         }
     }
     
-    func getAccessToken(completion: @escaping (OAuthSwiftCredential) -> ()){
+    private func isExpired(credentials: OAuthSwiftCredential) -> Bool {
+        
+        var is_expired = credentials.isTokenExpired()
+        
+        if is_expired {
+                        
+            let dt = credentials.oauthTokenExpiresAt!
+            
+            // Cooper Hewitt
+            
+            if dt.timeIntervalSince1970 < 1.0 {
+                is_expired = false
+            }
+        }
+        
+        return is_expired
+    }
+    
+    private func getAccessToken(completion: @escaping (OAuthSwiftCredential) -> ()){
         print("AUTHORIZE")
         
-        let keychain_label = "wwms://org.cooperhewitt.collection/access_token"
+        let keychain_label = "wwms://collection.cooperhewitt.org/access_token"
         
         if let creds = self.credentials {
-            
-            if !creds.isTokenExpired() {
+                        
+            if !isExpired(credentials: creds) {
                 print("HAVE EXISTING TOKEN")
                 completion(creds)
                 return
@@ -103,6 +121,7 @@ class ViewController: UIViewController {
         
         if let data = KeychainWrapper.standard.data(forKey: keychain_label) {
             
+            print("GOT DATA", data)
             let decoder = JSONDecoder()
             var creds: OAuthSwiftCredential
             
@@ -113,7 +132,7 @@ class ViewController: UIViewController {
                 return
             }
             
-            if !creds.isTokenExpired() {
+            if !isExpired(credentials: creds) {
                 print("HAVE EXISTING TOKEN")
                 completion(creds)
                 return
@@ -126,11 +145,13 @@ class ViewController: UIViewController {
             
             do {
                 let data = try encoder.encode(credentials)
+                print("SAVE DATA", data)
                 KeychainWrapper.standard.set(data, forKey: keychain_label)
             } catch (let error) {
                     print("SAD ENCODING", error)
             }
             
+            self.credentials = credentials
             completion(credentials)
         }
         
@@ -167,9 +188,7 @@ class ViewController: UIViewController {
         
         if oauth2_client_secret == nil || oauth2_client_secret == "" {
             //invalidConfigError(property: "OAuth2ClientSecret")
-            
-            print("SAD CLIENT SECRET")
-            
+            // print("SAD CLIENT SECRET")
             // Cooper Hewitt...
             // return
         }
