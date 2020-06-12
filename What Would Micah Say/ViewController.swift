@@ -8,6 +8,7 @@
 
 import UIKit
 import OAuth2Wrapper
+import OAuthSwift
 import AVFoundation
 
 class ViewController: UIViewController {
@@ -35,15 +36,17 @@ class ViewController: UIViewController {
         self.wwms_asking.startAnimating()
         self.wwms_asking.isHidden = false
         
-        self.oauth2_wrapper.GetAccessToken(completion: WWMS)
+        self.oauth2_wrapper!.GetAccessToken(completion: WWMS)
     }
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
         self.wwms_text.text = self.default_text
         self.wwms_asking.isHidden = true
         
-        var wrapper = OAuthWrapper(id: self.oauth2_id, callback_url: self.oauth_callback_url)
+        let wrapper = OAuth2Wrapper(id: self.oauth2_id, callback_url: self.oauth2_callback_url)
         wrapper.response_type = "code"
         wrapper.allow_missing_state = true
         wrapper.require_client_secret = false

@@ -48,10 +48,10 @@
       },
       {
         "package": "OAuth2Wrapper",
-        "repositoryURL": "/usr/local/aaronland/swift-oauth2-wrapper",
+        "repositoryURL": "https://github.com/aaronland/swift-oauth2-wrapper",
         "state": {
           "branch": "master",
-          "revision": "45a78fe0b6eb219a6de7198560c1783f045599f5",
+          "revision": "24eb8cdf80d5d7c4af49404e8db4081ae3b55a25",
           "version": null
         }
       },
