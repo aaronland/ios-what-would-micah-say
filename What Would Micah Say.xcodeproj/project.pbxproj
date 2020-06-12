@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4AAEB69C2493E56E00A75F71 /* KeychainItemAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAEB69B2493E56E00A75F71 /* KeychainItemAccessibility.swift */; };
-		4AAEB69E2493E58400A75F71 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAEB69D2493E58400A75F71 /* KeychainWrapper.swift */; };
+		4A5D1AC82493FDDE00D49FF6 /* OAuth2Wrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 4A5D1AC72493FDDE00D49FF6 /* OAuth2Wrapper */; };
 		4AAEB6A22493E63900A75F71 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 4AAEB6A12493E63900A75F71 /* Config.xcconfig */; };
 		4AB6EB202492E29B00C22C6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB6EB1F2492E29B00C22C6A /* AppDelegate.swift */; };
 		4AB6EB222492E29B00C22C6A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB6EB212492E29B00C22C6A /* SceneDelegate.swift */; };
@@ -17,7 +16,6 @@
 		4AB6EB292492E29F00C22C6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AB6EB282492E29F00C22C6A /* Assets.xcassets */; };
 		4AB6EB2C2492E29F00C22C6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AB6EB2A2492E29F00C22C6A /* LaunchScreen.storyboard */; };
 		4AB6EB372492E29F00C22C6A /* What_Would_Micah_SayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB6EB362492E29F00C22C6A /* What_Would_Micah_SayTests.swift */; };
-		4AB6EB432492E33E00C22C6A /* OAuthSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4AB6EB422492E33E00C22C6A /* OAuthSwift */; };
 		4AB6EB4A2492E68600C22C6A /* CooperHewitt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB6EB492492E68600C22C6A /* CooperHewitt.swift */; };
 /* End PBXBuildFile section */
 
@@ -32,8 +30,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4AAEB69B2493E56E00A75F71 /* KeychainItemAccessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainItemAccessibility.swift; sourceTree = "<group>"; };
-		4AAEB69D2493E58400A75F71 /* KeychainWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
 		4AAEB6A12493E63900A75F71 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		4AB6EB1C2492E29B00C22C6A /* What Would Micah Say.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "What Would Micah Say.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AB6EB1F2492E29B00C22C6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -55,7 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4AB6EB432492E33E00C22C6A /* OAuthSwift in Frameworks */,
+				4A5D1AC82493FDDE00D49FF6 /* OAuth2Wrapper in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,8 +96,6 @@
 				4AB6EB282492E29F00C22C6A /* Assets.xcassets */,
 				4AB6EB2A2492E29F00C22C6A /* LaunchScreen.storyboard */,
 				4AB6EB2D2492E29F00C22C6A /* Info.plist */,
-				4AAEB69B2493E56E00A75F71 /* KeychainItemAccessibility.swift */,
-				4AAEB69D2493E58400A75F71 /* KeychainWrapper.swift */,
 			);
 			path = "What Would Micah Say";
 			sourceTree = "<group>";
@@ -132,7 +126,7 @@
 			);
 			name = "What Would Micah Say";
 			packageProductDependencies = (
-				4AB6EB422492E33E00C22C6A /* OAuthSwift */,
+				4A5D1AC72493FDDE00D49FF6 /* OAuth2Wrapper */,
 			);
 			productName = "What Would Micah Say";
 			productReference = 4AB6EB1C2492E29B00C22C6A /* What Would Micah Say.app */;
@@ -185,7 +179,7 @@
 			);
 			mainGroup = 4AB6EB132492E29B00C22C6A;
 			packageReferences = (
-				4AB6EB412492E33D00C22C6A /* XCRemoteSwiftPackageReference "OAuthSwift" */,
+				4A5D1AC62493FDDE00D49FF6 /* XCRemoteSwiftPackageReference "swift-oauth2-wrapper" */,
 			);
 			productRefGroup = 4AB6EB1D2492E29B00C22C6A /* Products */;
 			projectDirPath = "";
@@ -226,8 +220,6 @@
 				4AB6EB242492E29B00C22C6A /* ViewController.swift in Sources */,
 				4AB6EB202492E29B00C22C6A /* AppDelegate.swift in Sources */,
 				4AB6EB4A2492E68600C22C6A /* CooperHewitt.swift in Sources */,
-				4AAEB69E2493E58400A75F71 /* KeychainWrapper.swift in Sources */,
-				4AAEB69C2493E56E00A75F71 /* KeychainItemAccessibility.swift in Sources */,
 				4AB6EB222492E29B00C22C6A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -391,7 +383,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "What Would Micah Say/What Would Micah Say.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = JVV5KS8E69;
+				DEVELOPMENT_TEAM = X5J42RJDZY;
 				INFOPLIST_FILE = "What Would Micah Say/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -412,7 +404,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "What Would Micah Say/What Would Micah Say.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = JVV5KS8E69;
+				DEVELOPMENT_TEAM = X5J42RJDZY;
 				INFOPLIST_FILE = "What Would Micah Say/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -503,21 +495,21 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		4AB6EB412492E33D00C22C6A /* XCRemoteSwiftPackageReference "OAuthSwift" */ = {
+		4A5D1AC62493FDDE00D49FF6 /* XCRemoteSwiftPackageReference "swift-oauth2-wrapper" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/OAuthSwift/OAuthSwift";
+			repositoryURL = "file:///usr/local/aaronland/swift-oauth2-wrapper";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.1.2;
+				branch = master;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		4AB6EB422492E33E00C22C6A /* OAuthSwift */ = {
+		4A5D1AC72493FDDE00D49FF6 /* OAuth2Wrapper */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 4AB6EB412492E33D00C22C6A /* XCRemoteSwiftPackageReference "OAuthSwift" */;
-			productName = OAuthSwift;
+			package = 4A5D1AC62493FDDE00D49FF6 /* XCRemoteSwiftPackageReference "swift-oauth2-wrapper" */;
+			productName = OAuth2Wrapper;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

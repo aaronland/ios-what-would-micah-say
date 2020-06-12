@@ -7,14 +7,16 @@
 //
 
 import UIKit
-import OAuthSwift
+import OAuth2Wrapper
 import AVFoundation
 
 class ViewController: UIViewController {
     
-    var oauth2: OAuthSwift?
-    var credentials: OAuthSwiftCredential?
+    let oauth2_id = "mmws://collection.cooperhewitt.org/access_token"
+    let oauth2_callback_url = "wwms://oauth2"
     
+    var oauth2_wrapper: OAuth2Wrapper?
+
     let synthesizer = AVSpeechSynthesizer()
     
     let default_text = "Press the \"💬\" button to see what Micah thinks."
@@ -33,22 +35,36 @@ class ViewController: UIViewController {
         self.wwms_asking.startAnimating()
         self.wwms_asking.isHidden = false
         
-        getAccessToken(completion: WWMS)
+        self.oauth2_wrapper.GetAccessToken(completion: WWMS)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.wwms_text.text = self.default_text
         self.wwms_asking.isHidden = true
+        
+        var wrapper = OAuthWrapper(id: self.oauth2_id, callback_url: self.oauth_callback_url)
+        wrapper.response_type = "code"
+        wrapper.allow_missing_state = true
+        wrapper.require_client_secret = false
+        wrapper.allow_null_expires = true
+        
+        self.oauth2_wrapper = wrapper
     }
     
-    private func WWMS(credentials: OAuthSwiftCredential){
+    private func WWMS(rsp: Result<OAuthSwiftCredential, Error>){
+        
+        switch rsp {
+        case .failure(let error):
+                print("SAD", error)
+        case .success(let credentials):
         
         let api = CooperHewittAPI(access_token: credentials.oauthToken)
         let method = "cooperhewitt.labs.whatWouldMicahSay"
         let params = [String:String]()
         
         api.ExecuteMethod(method: method, params: params, completion: doWWMS)
+        }
     }
     
     private func doWWMS(response: Result<Data, Error>) {
@@ -86,160 +102,7 @@ class ViewController: UIViewController {
             self.synthesizer.speak(utterance)
         }
     }
-    
-    private func isExpired(credentials: OAuthSwiftCredential) -> Bool {
-        
-        var is_expired = credentials.isTokenExpired()
-        
-        if is_expired {
-                        
-            let dt = credentials.oauthTokenExpiresAt!
-            
-            // Cooper Hewitt
-            
-            if dt.timeIntervalSince1970 < 1.0 {
-                is_expired = false
-            }
-        }
-        
-        return is_expired
-    }
-    
-    private func getAccessToken(completion: @escaping (OAuthSwiftCredential) -> ()){
-        print("AUTHORIZE")
-        
-        let keychain_label = "wwms://collection.cooperhewitt.org/access_token"
-        
-        if let creds = self.credentials {
-                        
-            if !isExpired(credentials: creds) {
-                print("HAVE EXISTING TOKEN")
-                completion(creds)
-                return
-            }
-        }
-        
-        if let data = KeychainWrapper.standard.data(forKey: keychain_label) {
-            
-            print("GOT DATA", data)
-            let decoder = JSONDecoder()
-            var creds: OAuthSwiftCredential
-            
-            do {
-                creds = try decoder.decode(OAuthSwiftCredential.self, from: data)
-            } catch(let error) {
-                print("SAD DECODE", error)
-                return
-            }
-            
-            if !isExpired(credentials: creds) {
-                print("HAVE EXISTING TOKEN")
-                completion(creds)
-                return
-            }
-        }
-        
-        func getStore(credentials: OAuthSwiftCredential) {
-            
-            let encoder = JSONEncoder()
-            
-            do {
-                let data = try encoder.encode(credentials)
-                print("SAVE DATA", data)
-                KeychainWrapper.standard.set(data, forKey: keychain_label)
-            } catch (let error) {
-                    print("SAD ENCODING", error)
-            }
-            
-            self.credentials = credentials
-            completion(credentials)
-        }
-        
-        self.getNewAccessToken(completion: getStore)
-    }
-    
-    private func getNewAccessToken(completion: @escaping (OAuthSwiftCredential) -> ()){
-        
-        print("GET NEW ACCESS TOKEN")
-        
-        let oauth2_auth_url = Bundle.main.object(forInfoDictionaryKey: "OAuth2AuthURL") as? String
-        let oauth2_token_url = Bundle.main.object(forInfoDictionaryKey: "OAuth2TokenURL") as? String
-        let oauth2_client_id = Bundle.main.object(forInfoDictionaryKey: "OAuth2ClientID") as? String
-        let oauth2_client_secret = Bundle.main.object(forInfoDictionaryKey: "OAuth2ClientSecret") as? String
-        let oauth2_scope = Bundle.main.object(forInfoDictionaryKey: "OAuth2Scope") as? String
-        
-        if oauth2_auth_url == nil || oauth2_auth_url == "" {
-            //invalidConfigError(property: "OAuth2AuthURL")
-            print("SAD AUTH URL")
-            return
-        }
-        
-        if oauth2_token_url == nil || oauth2_token_url == "" {
-            //invalidConfigError(property: "OAuth2TokenURL")
-            print("SAD TOKEN URL")
-            return
-        }
-        
-        if oauth2_client_id == nil || oauth2_client_id == "" {
-            //invalidConfigError(property: "OAuth2ClientID")
-            print("SAD CLIENT ID")
-            return
-        }
-        
-        if oauth2_client_secret == nil || oauth2_client_secret == "" {
-            //invalidConfigError(property: "OAuth2ClientSecret")
-            // print("SAD CLIENT SECRET")
-            // Cooper Hewitt...
-            // return
-        }
-        
-        if oauth2_scope == nil || oauth2_scope == "" {
-            //invalidConfigError(property: "OAuth2AuthURL")
-            print("SAD SCOPE")
-            return
-        }
-        
-        let oauth2_state = UUID().uuidString
-        
-        var response_type = "token"
-        var allow_missing_state = false
-        
-        response_type = "code" // Cooper Hewitt...
-        allow_missing_state = true  // Cooper Hewitt...
-        
-        let oauth2 = OAuth2Swift(
-            consumerKey:    oauth2_client_id!,
-            consumerSecret: oauth2_client_secret!,
-            authorizeUrl:   oauth2_auth_url!,
-            accessTokenUrl: oauth2_token_url!,
-            responseType:   response_type
-        )
-        
-        oauth2.allowMissingStateCheck = allow_missing_state
-        
-        // make sure we retain the oauth2 instance (I always forget this part...)
-        self.oauth2 = oauth2
-        
-        oauth2.authorize(
-            withCallbackURL: "wwms://oauth2",
-            scope: oauth2_scope!,
-            state:oauth2_state
-        ) { result in
-            // print("RESULT", result)
-            switch result {
-            case .success(let (credential, _, _)):
-                self.credentials = credential
-                completion(credential)
-            case .failure(let error):
-                // https://github.com/OAuthSwift/OAuthSwift/blob/master/Sources/OAuthSwiftError.swift
-                // https://github.com/OAuthSwift/OAuthSwift/wiki/Interpreting-Error-Codes
-                print("SAD CALLBACK", error, error.localizedDescription)
-                return
-            }
-        }
-        
-    }
-    
+  
 }
 
 extension UITextView {

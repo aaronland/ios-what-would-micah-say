@@ -39,11 +39,20 @@
       },
       {
         "package": "OAuthSwift",
-        "repositoryURL": "https://github.com/OAuthSwift/OAuthSwift",
+        "repositoryURL": "https://github.com/OAuthSwift/OAuthSwift.git",
         "state": {
           "branch": null,
           "revision": "fde77955e6983fbfaabd491709d52b8a82fda4d0",
           "version": "2.1.2"
+        }
+      },
+      {
+        "package": "OAuth2Wrapper",
+        "repositoryURL": "/usr/local/aaronland/swift-oauth2-wrapper",
+        "state": {
+          "branch": "master",
+          "revision": "45a78fe0b6eb219a6de7198560c1783f045599f5",
+          "version": null
         }
       },
       {
