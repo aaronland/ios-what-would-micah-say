@@ -8,10 +8,12 @@
 
 import UIKit
 import OAuthSwift
+import Logging
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    var logger = Logger(label: "info.aaronland.wwms")
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {

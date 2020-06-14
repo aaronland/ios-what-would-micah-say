@@ -11,13 +11,24 @@ import OAuth2Wrapper
 import OAuthSwift
 import AVFoundation
 
+struct WWMSResponse: Codable {
+    var micah: WWMS
+    var stat: String
+}
+
+struct WWMS: Codable {
+    var says: String
+}
+
 class ViewController: UIViewController {
+    
+    let app = UIApplication.shared.delegate as! AppDelegate
     
     let oauth2_id = "mmws://collection.cooperhewitt.org/access_token"
     let oauth2_callback_url = "wwms://oauth2"
     
     var oauth2_wrapper: OAuth2Wrapper?
-
+    
     let synthesizer = AVSpeechSynthesizer()
     
     let default_text = "Press the \"💬\" button to see what Micah thinks."
@@ -61,53 +72,78 @@ class ViewController: UIViewController {
         
         switch rsp {
         case .failure(let error):
-                print("SAD", error)
+            self.showError(error: error)
         case .success(let credentials):
-        
-        let api = CooperHewittAPI(access_token: credentials.oauthToken)
-        let method = "cooperhewitt.labs.whatWouldMicahSay"
-        let params = [String:String]()
-        
-        api.ExecuteMethod(method: method, params: params, completion: doWWMS)
+            
+            let api = CooperHewittAPI(access_token: credentials.oauthToken)
+            let method = "cooperhewitt.labs.whatWouldMicahSay"
+            let params = [String:String]()
+            
+            api.ExecuteMethod(method: method, params: params, completion: doWWMS)
         }
     }
     
-    private func doWWMS(response: Result<Data, Error>) {
+    private func doWWMS(rsp: Result<CooperHewittAPIResponse, Error>) {
         
         DispatchQueue.main.async {
             self.wwms_asking.stopAnimating()
             self.wwms_asking.isHidden = true
         }
         
-        var data: Data?
-        
-        switch response {
+        switch rsp {
         case .failure(let error):
-            print("SAD", error)
-        case .success(let raw):
-            data = raw
-        }
-        
-        let decoder = JSONDecoder()
-        var rsp: WWMSResponse
-        
-        do {
-            rsp = try decoder.decode(WWMSResponse.self, from: data!)
-        } catch(let error) {
-            print("SAD JSON", error)
+            
+            DispatchQueue.main.async {
+                switch error {
+                case is CooperHewittAPIError:
+                    let api_error = error as! CooperHewittAPIError
+                    self.showAlert(label: "Failed to read Micah", message: api_error.Message)
+                default:
+                    self.showAlert(label: "Failed to reach Micah", message: error.localizedDescription)
+                }
+                
+            }
             return
-        }
-        
-        DispatchQueue.main.async {
             
-            self.wwms_text.text = rsp.micah.says
-            self.wwms_text.updateTextFont()
             
-            let utterance = AVSpeechUtterance(string: rsp.micah.says)
-            self.synthesizer.speak(utterance)
+        case .success(let api_rsp):
+            
+            let decoder = JSONDecoder()
+            var wwms: WWMSResponse
+            
+            do {
+                wwms = try decoder.decode(WWMSResponse.self, from: api_rsp.Data)
+            } catch(let error) {
+                self.showError(error: error)
+                return
+            }
+            
+            DispatchQueue.main.async {
+                self.wwms_text.text = wwms.micah.says
+                self.wwms_text.updateTextFont()
+                
+                let utterance = AVSpeechUtterance(string: wwms.micah.says)
+                self.synthesizer.speak(utterance)
+            }
         }
     }
-  
+    
+    func showError(error: Error) {
+        self.showAlert(label:"Error", message: error.localizedDescription)
+    }
+    
+    func showAlert(label: String, message: String){
+        
+        self.app.logger.debug("Show alert \(label): \(message)")
+        
+        let alertController = UIAlertController(
+            title: label,
+            message: message,
+            preferredStyle: .alert
+        )
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alertController, animated: true, completion: nil)
+    }
 }
 
 extension UITextView {

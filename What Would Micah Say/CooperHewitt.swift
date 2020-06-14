@@ -1,25 +1,19 @@
-//
-//  CooperHewitt.swift
-//  shoebox
-//
-//  Created by asc on 6/11/20.
-//  Copyright © 2020 Aaronland. All rights reserved.
-//
-
 import Foundation
 
-/*
- {"micah":{"says":"Next thing you know I'm thinking about a completely different piece of the puzzle!"},"stat":"ok","event_publishing_state":"ok"}
- 
- */
-
-struct WWMSResponse: Codable {
-    var micah: WWMS
-    var stat: String
+struct CooperHewittAPIResponse {
+    var Data: Data
+    var URLResponse: URLResponse
 }
 
-struct WWMS: Codable {
-    var says: String
+struct CooperHewittAPIError: Error {
+    var Code: Int
+    var Message: String
+}
+
+enum CooperHewittAPIErrors : Error {
+    case missingData
+    case missingResponse
+    case unknownError
 }
 
 class CooperHewittAPI {
@@ -39,7 +33,7 @@ class CooperHewittAPI {
         self.access_token = access_token
     }
     
-    public func ExecuteMethod(method: String, params: [String:String], completion: @escaping (Result<Data, Error>)->()) {
+    public func ExecuteMethod(method: String, params: [String:String], completion: @escaping (Result<CooperHewittAPIResponse, Error>)->()) {
         
         let url = URL(string: self.endpoint)!
         
@@ -69,11 +63,44 @@ class CooperHewittAPI {
                 return
             }
 
-            //let rsp = String(decoding: data!, as: UTF8.self)
-            //print("OKAY", rsp)
+            if data == nil {
+                completion(.failure(CooperHewittAPIErrors.missingData))
+                return
+            }
+
+            if response == nil {
+                completion(.failure(CooperHewittAPIErrors.missingResponse))
+                return
+            }
             
-            completion(.success(data!))
+            let http_rsp = response as! HTTPURLResponse
+            
+            if http_rsp.statusCode != 200 {
+                
+                guard let str_code = http_rsp.allHeaderFields["X-api-error-code"] else {
+                    completion(.failure(CooperHewittAPIErrors.unknownError))
+                    return
+                 }
+ 
+                guard let message = http_rsp.allHeaderFields["X-api-error-message"] else {
+                    completion(.failure(CooperHewittAPIErrors.unknownError))
+                    return
+                 }
+
+                guard  let code = Int(str_code as! String) else {
+                    completion(.failure(CooperHewittAPIErrors.unknownError))
+                    return
+                }
+                
+                let api_error = CooperHewittAPIError(Code: code as Int, Message: message as! String)
+                completion(.failure(api_error))
+                return
+            }
+            
+            let api_response = CooperHewittAPIResponse(Data: data!, URLResponse: response!)
+            completion(.success(api_response))
         })
+        
         task.resume()
     }
 }

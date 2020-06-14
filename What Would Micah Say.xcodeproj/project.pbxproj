@@ -43,7 +43,7 @@
 		4AB6EB382492E29F00C22C6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4AB6EB462492E50100C22C6A /* What Would Micah Say.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "What Would Micah Say.entitlements"; sourceTree = "<group>"; };
 		4AB6EB492492E68600C22C6A /* CooperHewitt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CooperHewitt.swift; sourceTree = "<group>"; };
-		4AC3F6D52494062300445C2B /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		4AC3F6D52494062300445C2B /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Config.xcconfig; path = "What Would Micah Say/Config.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +68,7 @@
 		4AB6EB132492E29B00C22C6A = {
 			isa = PBXGroup;
 			children = (
+				4AC3F6D52494062300445C2B /* Config.xcconfig */,
 				4AB6EB1E2492E29B00C22C6A /* What Would Micah Say */,
 				4AB6EB352492E29F00C22C6A /* What Would Micah SayTests */,
 				4AB6EB1D2492E29B00C22C6A /* Products */,
@@ -95,7 +96,6 @@
 				4AB6EB282492E29F00C22C6A /* Assets.xcassets */,
 				4AB6EB2A2492E29F00C22C6A /* LaunchScreen.storyboard */,
 				4AB6EB2D2492E29F00C22C6A /* Info.plist */,
-				4AC3F6D52494062300445C2B /* Config.xcconfig */,
 			);
 			path = "What Would Micah Say";
 			sourceTree = "<group>";
@@ -383,7 +383,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "What Would Micah Say/What Would Micah Say.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = X5J42RJDZY;
+				DEVELOPMENT_TEAM = JVV5KS8E69;
 				INFOPLIST_FILE = "What Would Micah Say/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -404,7 +404,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "What Would Micah Say/What Would Micah Say.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = X5J42RJDZY;
+				DEVELOPMENT_TEAM = JVV5KS8E69;
 				INFOPLIST_FILE = "What Would Micah Say/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
