@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A6C2E852497D0F100801F81 /* CooperHewittAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 4A6C2E842497D0F100801F81 /* CooperHewittAPI */; };
 		4AB6EB202492E29B00C22C6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB6EB1F2492E29B00C22C6A /* AppDelegate.swift */; };
 		4AB6EB222492E29B00C22C6A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB6EB212492E29B00C22C6A /* SceneDelegate.swift */; };
 		4AB6EB242492E29B00C22C6A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB6EB232492E29B00C22C6A /* ViewController.swift */; };
@@ -14,7 +15,6 @@
 		4AB6EB292492E29F00C22C6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AB6EB282492E29F00C22C6A /* Assets.xcassets */; };
 		4AB6EB2C2492E29F00C22C6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AB6EB2A2492E29F00C22C6A /* LaunchScreen.storyboard */; };
 		4AB6EB372492E29F00C22C6A /* What_Would_Micah_SayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB6EB362492E29F00C22C6A /* What_Would_Micah_SayTests.swift */; };
-		4AB6EB4A2492E68600C22C6A /* CooperHewitt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB6EB492492E68600C22C6A /* CooperHewitt.swift */; };
 		4AC3F6D62494062300445C2B /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 4AC3F6D52494062300445C2B /* Config.xcconfig */; };
 		4AC3F6DC24941FFC00445C2B /* OAuth2Wrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 4AC3F6DB24941FFC00445C2B /* OAuth2Wrapper */; };
 /* End PBXBuildFile section */
@@ -42,7 +42,6 @@
 		4AB6EB362492E29F00C22C6A /* What_Would_Micah_SayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = What_Would_Micah_SayTests.swift; sourceTree = "<group>"; };
 		4AB6EB382492E29F00C22C6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4AB6EB462492E50100C22C6A /* What Would Micah Say.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "What Would Micah Say.entitlements"; sourceTree = "<group>"; };
-		4AB6EB492492E68600C22C6A /* CooperHewitt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CooperHewitt.swift; sourceTree = "<group>"; };
 		4AC3F6D52494062300445C2B /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Config.xcconfig; path = "What Would Micah Say/Config.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -51,6 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A6C2E852497D0F100801F81 /* CooperHewittAPI in Frameworks */,
 				4AC3F6DC24941FFC00445C2B /* OAuth2Wrapper in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -91,7 +91,6 @@
 				4AB6EB1F2492E29B00C22C6A /* AppDelegate.swift */,
 				4AB6EB212492E29B00C22C6A /* SceneDelegate.swift */,
 				4AB6EB232492E29B00C22C6A /* ViewController.swift */,
-				4AB6EB492492E68600C22C6A /* CooperHewitt.swift */,
 				4AB6EB252492E29B00C22C6A /* Main.storyboard */,
 				4AB6EB282492E29F00C22C6A /* Assets.xcassets */,
 				4AB6EB2A2492E29F00C22C6A /* LaunchScreen.storyboard */,
@@ -127,6 +126,7 @@
 			name = "What Would Micah Say";
 			packageProductDependencies = (
 				4AC3F6DB24941FFC00445C2B /* OAuth2Wrapper */,
+				4A6C2E842497D0F100801F81 /* CooperHewittAPI */,
 			);
 			productName = "What Would Micah Say";
 			productReference = 4AB6EB1C2492E29B00C22C6A /* What Would Micah Say.app */;
@@ -180,6 +180,7 @@
 			mainGroup = 4AB6EB132492E29B00C22C6A;
 			packageReferences = (
 				4AC3F6DA24941FFC00445C2B /* XCRemoteSwiftPackageReference "swift-oauth2-wrapper" */,
+				4A6C2E832497D0F100801F81 /* XCRemoteSwiftPackageReference "swift-cooperhewitt-api" */,
 			);
 			productRefGroup = 4AB6EB1D2492E29B00C22C6A /* Products */;
 			projectDirPath = "";
@@ -219,7 +220,6 @@
 			files = (
 				4AB6EB242492E29B00C22C6A /* ViewController.swift in Sources */,
 				4AB6EB202492E29B00C22C6A /* AppDelegate.swift in Sources */,
-				4AB6EB4A2492E68600C22C6A /* CooperHewitt.swift in Sources */,
 				4AB6EB222492E29B00C22C6A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -495,6 +495,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		4A6C2E832497D0F100801F81 /* XCRemoteSwiftPackageReference "swift-cooperhewitt-api" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/aaronland/swift-cooperhewitt-api";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.2;
+			};
+		};
 		4AC3F6DA24941FFC00445C2B /* XCRemoteSwiftPackageReference "swift-oauth2-wrapper" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/aaronland/swift-oauth2-wrapper";
@@ -506,6 +514,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		4A6C2E842497D0F100801F81 /* CooperHewittAPI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4A6C2E832497D0F100801F81 /* XCRemoteSwiftPackageReference "swift-cooperhewitt-api" */;
+			productName = CooperHewittAPI;
+		};
 		4AC3F6DB24941FFC00445C2B /* OAuth2Wrapper */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 4AC3F6DA24941FFC00445C2B /* XCRemoteSwiftPackageReference "swift-oauth2-wrapper" */;

@@ -10,6 +10,7 @@ import UIKit
 import OAuth2Wrapper
 import OAuthSwift
 import AVFoundation
+import CooperHewittAPI
 
 struct WWMSResponse: Codable {
     var micah: WWMS
@@ -55,6 +56,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         self.wwms_text.text = self.default_text
+        self.wwms_text.updateTextFont()
+        
         self.wwms_asking.isHidden = true
         
         let wrapper = OAuth2Wrapper(id: self.oauth2_id, callback_url: self.oauth2_callback_url)
