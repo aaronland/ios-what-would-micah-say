@@ -25,9 +25,6 @@ class ViewController: UIViewController {
     
     let app = UIApplication.shared.delegate as! AppDelegate
     
-    let oauth2_id = "mmws://collection.cooperhewitt.org/access_token"
-    let oauth2_callback_url = "wwms://oauth2"
-    
     var oauth2_wrapper: OAuth2Wrapper?
     
     let synthesizer = AVSpeechSynthesizer()
@@ -60,15 +57,23 @@ class ViewController: UIViewController {
         
         self.wwms_asking.isHidden = true
         
-        let wrapper = OAuth2Wrapper(id: self.oauth2_id, callback_url: self.oauth2_callback_url)
-        wrapper.response_type = "code"
-        wrapper.allow_missing_state = true
-        wrapper.require_client_secret = false
-        wrapper.allow_null_expires = true
+        let result = NewOAuth2WrapperConfigFromBundle(bundle: Bundle.main, prefix: "CooperHewitt")
         
-        // wrapper.logger.logLevel = .debug
-        
-        self.oauth2_wrapper = wrapper
+        switch result {
+        case .failure(let error):
+            print(error)
+            return
+        case .success(var config):
+            
+            config.ResponseType = "code"
+            config.AllowMissingState = true
+            config.AllowNullExpires = true
+            
+            let wrapper = OAuth2Wrapper(config: config)
+            // wrapper.logger.logLevel = .debug
+            
+            self.oauth2_wrapper = wrapper
+        }
     }
     
     private func WWMS(rsp: Result<OAuthSwiftCredential, Error>){

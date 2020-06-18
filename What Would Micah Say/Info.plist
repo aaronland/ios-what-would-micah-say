@@ -71,15 +71,19 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>OAuth2AuthURL</key>
-	<string>$(OAUTH2_AUTH_URL)</string>
-	<key>OAuth2TokenURL</key>
-	<string>$(OAUTH2_TOKEN_URL)</string>
-	<key>OAuth2ClientID</key>
-	<string>$(OAUTH2_CLIENT_ID)</string>
-	<key>OAuth2ClientSecret</key>
-	<string>$(OAUTH2_CLIENT_SECRET)</string>
-	<key>OAuth2Scope</key>
-	<string>$(OAUTH2_SCOPE)</string>
+	<key>CooperHewittAuthURL</key>
+	<string>$(COOPERHEWITT_AUTH_URL)</string>
+	<key>CooperHewittTokenURL</key>
+	<string>$(COOPERHEWITT_TOKEN_URL)</string>
+	<key>CooperHewittClientID</key>
+	<string>$(COOPERHEWITT_CLIENT_ID)</string>
+	<key>CooperHewittClientSecret</key>
+	<string>$(COOPERHEWITT_CLIENT_SECRET)</string>
+	<key>CooperHewittScope</key>
+	<string>$(COOPERHEWITT_SCOPE)</string>
+	<key>CooperHewittCallbackURL</key>
+	<string>$(COOPERHEWITT_CALLBACK_URL)</string>
+	<key>CooperHewittKeychainLabel</key>
+	<string>$(COOPERHEWITT_KEYCHAIN_LABEL)</string>
 </dict>
 </plist>

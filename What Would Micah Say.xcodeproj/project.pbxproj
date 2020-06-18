@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A40C331249BD0AF0077B8E3 /* OAuth2Wrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 4A40C330249BD0AF0077B8E3 /* OAuth2Wrapper */; };
 		4A6C2E852497D0F100801F81 /* CooperHewittAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 4A6C2E842497D0F100801F81 /* CooperHewittAPI */; };
 		4AB6EB202492E29B00C22C6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB6EB1F2492E29B00C22C6A /* AppDelegate.swift */; };
 		4AB6EB222492E29B00C22C6A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB6EB212492E29B00C22C6A /* SceneDelegate.swift */; };
@@ -16,7 +17,6 @@
 		4AB6EB2C2492E29F00C22C6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AB6EB2A2492E29F00C22C6A /* LaunchScreen.storyboard */; };
 		4AB6EB372492E29F00C22C6A /* What_Would_Micah_SayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB6EB362492E29F00C22C6A /* What_Would_Micah_SayTests.swift */; };
 		4AC3F6D62494062300445C2B /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 4AC3F6D52494062300445C2B /* Config.xcconfig */; };
-		4AC3F6DC24941FFC00445C2B /* OAuth2Wrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 4AC3F6DB24941FFC00445C2B /* OAuth2Wrapper */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,7 +51,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4A6C2E852497D0F100801F81 /* CooperHewittAPI in Frameworks */,
-				4AC3F6DC24941FFC00445C2B /* OAuth2Wrapper in Frameworks */,
+				4A40C331249BD0AF0077B8E3 /* OAuth2Wrapper in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,8 +125,8 @@
 			);
 			name = "What Would Micah Say";
 			packageProductDependencies = (
-				4AC3F6DB24941FFC00445C2B /* OAuth2Wrapper */,
 				4A6C2E842497D0F100801F81 /* CooperHewittAPI */,
+				4A40C330249BD0AF0077B8E3 /* OAuth2Wrapper */,
 			);
 			productName = "What Would Micah Say";
 			productReference = 4AB6EB1C2492E29B00C22C6A /* What Would Micah Say.app */;
@@ -179,8 +179,8 @@
 			);
 			mainGroup = 4AB6EB132492E29B00C22C6A;
 			packageReferences = (
-				4AC3F6DA24941FFC00445C2B /* XCRemoteSwiftPackageReference "swift-oauth2-wrapper" */,
 				4A6C2E832497D0F100801F81 /* XCRemoteSwiftPackageReference "swift-cooperhewitt-api" */,
+				4A40C32F249BD0AF0077B8E3 /* XCRemoteSwiftPackageReference "swift-oauth2-wrapper" */,
 			);
 			productRefGroup = 4AB6EB1D2492E29B00C22C6A /* Products */;
 			projectDirPath = "";
@@ -495,6 +495,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		4A40C32F249BD0AF0077B8E3 /* XCRemoteSwiftPackageReference "swift-oauth2-wrapper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/aaronland/swift-oauth2-wrapper";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.2;
+			};
+		};
 		4A6C2E832497D0F100801F81 /* XCRemoteSwiftPackageReference "swift-cooperhewitt-api" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/aaronland/swift-cooperhewitt-api";
@@ -503,26 +511,18 @@
 				minimumVersion = 0.0.2;
 			};
 		};
-		4AC3F6DA24941FFC00445C2B /* XCRemoteSwiftPackageReference "swift-oauth2-wrapper" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/aaronland/swift-oauth2-wrapper";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.1;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		4A40C330249BD0AF0077B8E3 /* OAuth2Wrapper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4A40C32F249BD0AF0077B8E3 /* XCRemoteSwiftPackageReference "swift-oauth2-wrapper" */;
+			productName = OAuth2Wrapper;
+		};
 		4A6C2E842497D0F100801F81 /* CooperHewittAPI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 4A6C2E832497D0F100801F81 /* XCRemoteSwiftPackageReference "swift-cooperhewitt-api" */;
 			productName = CooperHewittAPI;
-		};
-		4AC3F6DB24941FFC00445C2B /* OAuth2Wrapper */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 4AC3F6DA24941FFC00445C2B /* XCRemoteSwiftPackageReference "swift-oauth2-wrapper" */;
-			productName = OAuth2Wrapper;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
